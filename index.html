@@ -148,71 +148,86 @@ footer strong { font-family: var(--display); color: var(--ink); font-size: 18px;
   .hero-tags a:hover { transform: translateY(-2px); }
 }
 
-/* AI 智慧空間 */
-:root { --panel: #23271f; --panel-line: #3a4034; --panel-fg: #eef1ea; --panel-muted: #a3aa9c; --ring: #f0c987; }
+/* AI 智慧空間：黎明的一天 */
 .ai { padding-block: 88px; background: var(--grass-soft); }
-.ai-head { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: end; margin-bottom: 44px; }
-.ai-head .word { font-size: clamp(56px, 8vw, 96px); }
-.ai-head h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.45; margin-top: 12px; }
+.ai-head { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: end; margin-bottom: 40px; }
+.ai-head h2 { font-size: clamp(22px, 2.6vw, 28px); line-height: 1.45; margin-top: 14px; }
 .ai-head p { color: var(--muted); max-width: 32em; }
-.ai-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 32px; align-items: start; }
 
-.console {
-  background: var(--panel); color: var(--panel-fg); border-radius: 20px;
-  padding: 26px; display: grid; gap: 20px; min-width: 0;
+.day { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.sky {
+  --sky-a: #f3f1df; --sky-b: #dfeccb; --sky-fg: #2a2d29;
+  position: relative; min-height: 300px; min-width: 0;
+  background: linear-gradient(180deg, var(--sky-a), var(--sky-b));
+  color: var(--sky-fg);
 }
-.console-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .16em; color: var(--panel-muted); }
-.live { display: flex; align-items: center; gap: 8px; color: #9cc768; }
-.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9cc768; }
-.ring { position: relative; width: min(260px, 100%); aspect-ratio: 1; margin: 0 auto; }
-.ring > span { position: absolute; border-radius: 50%; }
-.ring .base { inset: 0; border: 1px solid var(--panel-line); background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.07), transparent 60%); }
-.ring .glow { inset: 10%; border: 3px solid var(--ring); box-shadow: 0 0 22px var(--ring), inset 0 0 18px var(--ring); opacity: var(--ring-o, .9); transition: border-color .8s ease, box-shadow .8s ease, opacity .8s ease; }
-.ring .sweep {
-  inset: 10%; opacity: var(--ring-o, .9);
-  background: conic-gradient(from 0deg, transparent 0 78%, var(--ring) 97%, transparent);
-  -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%); mask: radial-gradient(circle, transparent 62%, #000 63%);
-}
-.ring .readout { inset: 0; display: grid; place-content: center; text-align: center; gap: 4px; }
-.ring .readout b { font-family: var(--display); font-size: 28px; letter-spacing: .2em; }
-.ring .readout small { font-size: 12px; letter-spacing: .14em; color: var(--panel-muted); font-variant-numeric: tabular-nums; }
-.modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.modes button {
-  font: inherit; font-size: 14px; letter-spacing: .1em; padding: 8px 4px; border-radius: 999px;
-  background: transparent; color: var(--panel-muted); border: 1px solid var(--panel-line);
-}
-.modes button:hover { color: var(--panel-fg); border-color: var(--panel-muted); }
-.modes button[aria-pressed="true"] { background: #9cc768; color: #1c2216; border-color: #9cc768; font-weight: 700; }
-.modes button:focus-visible { outline: 2px solid #9cc768; outline-offset: 2px; }
-.telemetry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--panel-line); border: 1px solid var(--panel-line); border-radius: 12px; overflow: hidden; }
-.telemetry div { background: var(--panel); padding: 10px 12px; display: grid; gap: 2px; min-width: 0; }
-.telemetry span { font-size: 12px; color: var(--panel-muted); }
-.telemetry b { font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.console .note { font-size: 12px; color: var(--panel-muted); }
+.sky svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sky .arc { fill: none; stroke: currentColor; stroke-opacity: .28; stroke-width: 1.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+.sky .ground { stroke: currentColor; stroke-opacity: .35; stroke-width: 1.5; }
+.sky .sun { fill: #f2b84b; }
+.sky .halo { fill: #f2b84b; opacity: .22; }
+.sky .leaf { fill: #5c8a2e; }
+.sky .leaf.l2 { fill: #7aa84a; }
+.sky .stem { stroke: #4b7424; stroke-width: 2; fill: none; stroke-linecap: round; }
+.sky-label { position: absolute; left: 24px; top: 20px; display: grid; gap: 2px; }
+.sky-label b { font-family: var(--display); font-size: clamp(34px, 4.6vw, 48px); line-height: 1.1; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.sky-label span { font-size: 14px; letter-spacing: .12em; opacity: .75; }
 
-.ai-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; min-width: 0; }
-.ai-item { background: var(--bg); padding: 22px 22px 24px; display: grid; gap: 6px; align-content: start; min-width: 0; }
-.ai-item .tag { font-size: 11px; letter-spacing: .18em; color: var(--grass); font-weight: 700; }
-.ai-item h3 { margin: 0; font-family: var(--display); font-size: 19px; }
-.ai-item p { color: var(--muted); font-size: 15px; line-height: 1.75; }
+.day-text { padding: 32px 30px; display: grid; gap: 14px; align-content: center; min-width: 0; border-left: 1px solid var(--line); }
+.day-text h3 { margin: 0; font-family: var(--display); font-size: clamp(21px, 2.3vw, 25px); line-height: 1.45; }
+.day-text p { color: var(--muted); }
+.day-text ul { list-style: none; margin: 4px 0 0; padding: 14px 0 0; border-top: 1px dashed var(--line); display: grid; gap: 8px; }
+.day-text li { display: flex; gap: 10px; align-items: baseline; font-size: 15px; }
+.day-text li::before { content: ""; flex: none; width: 10px; height: 6px; border-radius: 10px 0; background: var(--grass); transform: translateY(-3px) rotate(-20deg); }
+
+.timeline { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 22px; }
+.timeline::before { content: ""; position: absolute; left: 10%; right: 10%; top: 9px; height: 2px; background: var(--line); }
+.timeline button {
+  position: relative; display: grid; justify-items: center; gap: 6px; padding: 0 4px 4px;
+  background: none; border: 0; font: inherit; color: var(--muted); text-align: center;
+}
+.timeline button i { width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 2px solid var(--concrete-deep); position: relative; }
+.timeline button b { font-size: 15px; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 700; }
+.timeline button span { font-size: 13px; letter-spacing: .08em; }
+.timeline button[aria-pressed="true"] i { background: var(--grass); border-color: var(--grass); box-shadow: 0 0 0 5px var(--grass-soft), 0 0 0 6px var(--grass); }
+.timeline button[aria-pressed="true"] span { color: var(--grass); font-weight: 700; }
+.timeline button:hover i { border-color: var(--grass); }
+.timeline button:focus-visible { outline: 2px solid var(--grass); outline-offset: 4px; border-radius: 8px; }
+
+.ai-perks { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 40px; }
+.ai-perks h3 { grid-column: 1 / -1; margin: 0; font-family: var(--display); font-size: 20px; }
+.perk { display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; align-items: start; min-width: 0; }
+.perk svg { grid-row: span 2; width: 28px; height: 28px; }
+.perk svg path { fill: var(--grass); }
+.perk b { font-size: 16px; }
+.perk span { color: var(--muted); font-size: 15px; line-height: 1.7; }
+.ai-note { margin-top: 28px; font-size: 13px; color: var(--concrete-deep); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ring .sweep { animation: ringSpin 9s linear infinite; }
-  .live::before { animation: livePulse 2s ease-in-out infinite; }
-  .ai-item { transition: background .3s ease; }
-  .ai-item:hover { background: var(--grass-soft); }
-  .modes button { transition: background .25s ease, color .25s ease, border-color .25s ease; }
+  .sky { transition: color .8s ease; }
+  .sky .sun-g { transition: transform 1.1s cubic-bezier(.3,.7,.2,1); }
+  .sky .halo { animation: halo 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .sky .leafs { animation: sway 5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+  .day-text > * { animation: rise .6s ease both; }
+  .timeline button i { transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .perk svg { transition: transform .4s ease; }
+  .perk:hover svg { transform: rotate(-14deg) scale(1.12); }
 }
-@keyframes ringSpin { to { transform: rotate(360deg); } }
-@keyframes livePulse { 50% { opacity: .3; } }
+@keyframes halo { 50% { transform: scale(1.25); opacity: .1; } }
+@keyframes sway { 50% { transform: rotate(3deg); } }
+@keyframes rise { from { opacity: .2; transform: translateY(6px); } }
 @media (max-width: 900px) {
   .ai { padding-block: 56px; }
-  .ai-head, .ai-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ai-head { grid-template-columns: 1fr; gap: 16px; }
+  .day { grid-template-columns: 1fr; }
+  .day-text { border-left: 0; border-top: 1px solid var(--line); padding: 24px 20px; }
+  .ai-perks { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 480px) {
-  .ai-list { grid-template-columns: 1fr; }
-  .telemetry { grid-template-columns: repeat(2, 1fr); }
-  .console { padding: 20px; }
+@media (max-width: 520px) {
+  .sky { min-height: 230px; }
+  .timeline button span { font-size: 12px; }
+  .timeline button b { font-size: 13px; }
+  .ai-perks { grid-template-columns: 1fr; }
 }
 
 /* 聯絡 */
@@ -337,65 +352,124 @@ html, body, a, button, [role="button"] {
     <div class="wrap">
       <div class="ai-head">
         <div>
-          <div class="word">AI</div>
+          <div class="word">智慧</div>
           <h2>這裡是一間 AI 智慧空間</h2>
         </div>
-        <p>燈光、空調、投影、窗簾和門禁都接上同一套 AI 中控。不用找開關、也不用找遙控器，人一走進來，空間就換成適合這場會面的樣子。</p>
+        <p>黎明辦公室裡的 AI 會看時間、看天光、看有沒有人在，替你把燈、空調、投影和門鎖顧好。你只要專心工作。點下面的時間，看看它一天裡都在做什麼。</p>
       </div>
-      <div class="ai-grid">
-        <div class="console" id="console" aria-label="AI 情境切換示範">
-          <div class="console-head"><span>情境控制</span><span class="live">AI 運作中</span></div>
-          <div class="ring" aria-hidden="true">
-            <span class="base"></span><span class="glow"></span><span class="sweep"></span>
-            <span class="readout"><b id="ro-name">小聚</b><small id="ro-k">3500K · 70%</small></span>
-          </div>
-          <div class="modes" role="group" aria-label="選擇情境">
-            <button type="button" id="m-gather" data-mode="gather" aria-pressed="true">小聚</button>
-            <button type="button" id="m-present" data-mode="present" aria-pressed="false">簡報</button>
-            <button type="button" id="m-focus" data-mode="focus" aria-pressed="false">專注</button>
-            <button type="button" id="m-night" data-mode="night" aria-pressed="false">夜間</button>
-          </div>
-          <div class="telemetry">
-            <div><span>燈光</span><b id="t-light">3500K 70%</b></div>
-            <div><span>空調</span><b id="t-air">24.0°C</b></div>
-            <div><span>投影幕</span><b id="t-screen">待機</b></div>
-            <div><span>窗簾</span><b id="t-shade">半開</b></div>
-            <div><span>音場</span><b id="t-audio">圍坐收音</b></div>
-            <div><span>門禁</span><b id="t-door">訪客通行</b></div>
-          </div>
-          <p class="note">點上面的情境試試看。數值為示範，實際設定依現場調整。</p>
+
+      <div class="day" id="day">
+        <div class="sky" id="sky">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+            <path class="arc" d="M40 210 A160 160 0 0 1 360 210"/>
+            <line class="ground" x1="0" y1="210" x2="400" y2="210"/>
+            <g class="sun-g" id="sun" transform="translate(65 124)">
+              <circle class="halo" r="22"/>
+              <circle class="sun" r="12"/>
+            </g>
+            <g class="leafs">
+              <path class="stem" d="M352 210 C352 190 348 172 340 156"/>
+              <ellipse class="leaf" cx="332" cy="176" rx="15" ry="7" transform="rotate(-30 332 176)"/>
+              <ellipse class="leaf l2" cx="362" cy="186" rx="14" ry="6.5" transform="rotate(28 362 186)"/>
+              <ellipse class="leaf" cx="350" cy="160" rx="13" ry="6" transform="rotate(35 350 160)"/>
+              <ellipse class="leaf l2" cx="334" cy="150" rx="11" ry="5.5" transform="rotate(-40 334 150)"/>
+            </g>
+          </svg>
+          <div class="sky-label"><b id="d-time">08:30</b><span id="d-mood">清晨・晨光柔和</span></div>
         </div>
-        <div class="ai-list">
-          <div class="ai-item"><span class="tag">燈光</span><h3>智慧照明</h3><p>依情境分區調光，色溫從冷白到暖白自動切換。</p></div>
-          <div class="ai-item"><span class="tag">空調</span><h3>溫濕度調節</h3><p>感測人數與日照，自動調整空調和換氣，玻璃屋頂下午也舒適。</p></div>
-          <div class="ai-item"><span class="tag">影音</span><h3>一鍵投影</h3><p>筆電入座就能投放到大螢幕，收音依座位圍成一圈。</p></div>
-          <div class="ai-item"><span class="tag">門禁</span><h3>智慧門鎖</h3><p>人臉、密碼、NFC 都能開門，預約訪客到場自動通行，離場後啟動安防。</p></div>
-          <div class="ai-item"><span class="tag">行程</span><h3>行事曆聯動</h3><p>會議開始前，先把燈光、窗簾和投影調成對應的情境。</p></div>
-          <div class="ai-item"><span class="tag">植栽</span><h3>綠植照護</h3><p>監測土壤濕度並自動澆灌，門口的綠意天天都有人顧。</p></div>
+        <div class="day-text" id="d-text">
+          <h3 id="d-title">刷臉進門，辦公室跟著醒來</h3>
+          <p id="d-desc">第一個人到門口，門鎖認出臉就開了。AI 看外面天光還不夠，只補一點燈，空調也先開到舒服的溫度。</p>
+          <ul id="d-list">
+            <li>門口認臉開門，不用找鑰匙</li>
+            <li>燈光只補不足的天光</li>
+            <li>空調提早開到舒適溫度</li>
+          </ul>
         </div>
       </div>
+
+      <div class="timeline" role="group" aria-label="選擇一天中的時間">
+        <button type="button" id="tl-0" data-i="0" aria-pressed="true"><i></i><b>08:30</b><span>到辦公室</span></button>
+        <button type="button" id="tl-1" data-i="1" aria-pressed="false"><i></i><b>10:30</b><span>開會</span></button>
+        <button type="button" id="tl-2" data-i="2" aria-pressed="false"><i></i><b>13:30</b><span>午後</span></button>
+        <button type="button" id="tl-3" data-i="3" aria-pressed="false"><i></i><b>17:30</b><span>傍晚</span></button>
+        <button type="button" id="tl-4" data-i="4" aria-pressed="false"><i></i><b>21:00</b><span>大家都走了</span></button>
+      </div>
+
+      <div class="ai-perks">
+        <h3>AI 幫你顧好的事</h3>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>門鎖會認人</b><span>人臉、密碼、手機感應都能開。</span></div>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>燈跟著天光走</b><span>白天少開，天暗了才慢慢補上。</span></div>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>空調看人數</b><span>人多就加強，沒人就省電。</span></div>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>開會不用接線</b><span>筆電一連，大螢幕就有畫面。</span></div>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>植栽有人顧</b><span>土乾了會提醒，綠意不會枯掉。</span></div>
+        <div class="perk"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25C6 21 4 13 7 4c8 1 14 7 13 15-1 3-3 5-6 6Z"/></svg><b>離開自動看家</b><span>最後一人走後，關燈、上鎖、開安防。</span></div>
+      </div>
+      <p class="ai-note">以上為情境說明，實際功能依現場設備為準。</p>
     </div>
   </section>
 <script>
 (function () {
-  var modes = {
-    gather:  { name: '小聚', k: '3500K · 70%', ring: '#f0c987', o: .9, light: '3500K 70%', air: '24.0°C', screen: '待機',   shade: '半開', audio: '圍坐收音', door: '訪客通行' },
-    present: { name: '簡報', k: '4000K · 30%', ring: '#a9c8e8', o: .6, light: '4000K 30%', air: '24.5°C', screen: '投影中', shade: '全關', audio: '講者優先', door: '訪客通行' },
-    focus:   { name: '專注', k: '5000K · 90%', ring: '#e9f1f5', o: 1,  light: '5000K 90%', air: '25.0°C', screen: '關閉',   shade: '全開', audio: '白噪音',   door: '僅限成員' },
-    night:   { name: '夜間', k: '安防啟動',     ring: '#9cc768', o: .4, light: '關閉',      air: '節能',   screen: '關閉',   shade: '全關', audio: '關閉',     door: '安防中' }
-  };
-  var root = document.getElementById('console');
-  var btns = root.querySelectorAll('.modes button');
-  function set(id) {
-    var m = modes[id];
-    root.style.setProperty('--ring', m.ring);
-    root.style.setProperty('--ring-o', m.o);
-    document.getElementById('ro-name').textContent = m.name;
-    document.getElementById('ro-k').textContent = m.k;
-    ['light', 'air', 'screen', 'shade', 'audio', 'door'].forEach(function (f) { document.getElementById('t-' + f).textContent = m[f]; });
-    btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.mode === id ? 'true' : 'false'); });
+  var scenes = [
+    { t: .18, a: '#f3f1df', b: '#dfeccb', fg: '#2a2d29', time: '08:30', mood: '清晨・晨光柔和',
+      title: '刷臉進門，辦公室跟著醒來',
+      desc: '第一個人到門口，門鎖認出臉就開了。AI 看外面天光還不夠，只補一點燈，空調也先開到舒服的溫度。',
+      list: ['門口認臉開門，不用找鑰匙', '燈光只補不足的天光', '空調提早開到舒適溫度'] },
+    { t: .4, a: '#e4f0f4', b: '#f7faf3', fg: '#2a2d29', time: '10:30', mood: '上午・光線最均勻',
+      title: '坐下來，會議就能開始',
+      desc: '大家圍著紅色沙發坐好，筆電一連大螢幕就有畫面。AI 把靠螢幕那側的光調低，投影看得清楚。',
+      list: ['筆電無線投到大螢幕', '螢幕附近燈光自動調暗', '依人數加強空調'] },
+    { t: .62, a: '#fff8de', b: '#f1f5e6', fg: '#2a2d29', time: '13:30', mood: '午後・陽光最強',
+      title: '太陽最大的時候，也不刺眼',
+      desc: '玻璃屋頂讓陽光整片進來。AI 看日照變強，就把遮陽放下一點，室內燈幾乎全關，省電又明亮。',
+      list: ['日照強時自動遮陽', '室內燈調到最低', '空調補強降溫'] },
+    { t: .86, a: '#f4dcbc', b: '#ece6da', fg: '#2a2d29', time: '17:30', mood: '傍晚・天色轉暗',
+      title: '天暗下來，燈光接手',
+      desc: '外面的光慢慢退了，AI 把燈一點一點調亮，色溫轉成暖白，下班前的最後一段也待得舒服。',
+      list: ['燈光漸亮、轉為暖色', '提醒植栽該澆水了', '整理明天的會議室預約'] },
+    { t: .75, a: '#262b24', b: '#363d32', fg: '#eef1ea', time: '21:00', mood: '夜間・交給 AI 看家', night: true,
+      title: '人都走了，換 AI 顧家',
+      desc: '最後一個人離開後，AI 確認沒人在，自動關燈、關空調，門窗上鎖並開啟安防。',
+      list: ['燈和空調全部關閉', '門窗上鎖、開啟安防', '有人靠近會通知負責人'] }
+  ];
+  var sky = document.getElementById('sky'), sun = document.getElementById('sun');
+  var text = document.getElementById('d-text');
+  var btns = document.querySelectorAll('.timeline button');
+  var sunCircle = sun.querySelector('.sun'), halo = sun.querySelector('.halo');
+  var current = 0, timer = null;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(i) {
+    current = i;
+    var s = scenes[i], ang = Math.PI - s.t * Math.PI;
+    var x = 200 + 160 * Math.cos(ang), y = 210 - 160 * Math.sin(ang);
+    sky.style.setProperty('--sky-a', s.a);
+    sky.style.setProperty('--sky-b', s.b);
+    sky.style.setProperty('--sky-fg', s.fg);
+    sun.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+    sun.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    sunCircle.style.fill = s.night ? '#e6ead9' : '';
+    halo.style.fill = s.night ? '#e6ead9' : '';
+    document.getElementById('d-time').textContent = s.time;
+    document.getElementById('d-mood').textContent = s.mood;
+    document.getElementById('d-title').textContent = s.title;
+    document.getElementById('d-desc').textContent = s.desc;
+    var ul = document.getElementById('d-list');
+    ul.textContent = '';
+    s.list.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+    Array.prototype.forEach.call(text.children, function (el) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
+    btns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
   }
-  btns.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.mode); }); });
+  function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+  btns.forEach(function (b, j) {
+    b.addEventListener('click', function () { stopAuto(); show(j); });
+    b.addEventListener('mouseenter', function () { stopAuto(); show(j); });
+  });
+  show(0);
+  if (!reduce) {
+    timer = setInterval(function () { show((current + 1) % scenes.length); }, 5000);
+    document.getElementById('day').addEventListener('mouseenter', stopAuto);
+  }
 })();
 </script>
 
