@@ -642,8 +642,8 @@ html, body, a, button, [role="button"] {
           <legend>想做什麼</legend>
           <div class="chips" id="bk-purpose">
             <button type="button" id="bk-p0" aria-pressed="true">參觀空間</button>
-            <button type="button" id="bk-p1" aria-pressed="false">開會討論</button>
-            <button type="button" id="bk-p2" aria-pressed="false">讀書會・工作坊</button>
+            <button type="button" id="bk-p1" aria-pressed="false">工作坊</button>
+            <button type="button" id="bk-p2" aria-pressed="false">會議</button>
             <button type="button" id="bk-p3" aria-pressed="false">其他</button>
           </div>
         </fieldset>
@@ -685,7 +685,7 @@ html, body, a, button, [role="button"] {
   </div>
 <script>
 (function () {
-  var purposes = ['參觀空間', '開會討論', '讀書會・工作坊', '其他'];
+  var purposes = ['參觀空間', '工作坊', '會議', '其他'];
   var slots = ['上午', '下午', '晚上', '都可以'];
   var state = { p: 0, s: 1, n: 2 };
   var msg = document.getElementById('bk-msg'), lineBtn = document.getElementById('bk-line');
